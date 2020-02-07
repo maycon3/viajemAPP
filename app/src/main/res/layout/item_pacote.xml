@@ -10,14 +10,12 @@
         android:id="@+id/item_pacote_cardview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="10dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/item_pacotes_imagem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,7 +26,6 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sao_paulo_sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +38,6 @@
                 android:layout_margin="8dp"
                 android:background="@android:drawable/screen_background_dark_transparent"
                 android:padding="8dp"
-                android:text="São Paulo"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -63,30 +59,29 @@
                 app:layout_constraintTop_toBottomOf="@+id/item_pacotes_imagem" />
 
             <TextView
-                android:id="@+id/item_pacote_dias"
+                android:id="@+id/item_pacotes_dias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="2 dias"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                tools:text="@sample/pacotes.json/pacotes/dias"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_pacotes_divisor"
-                tools:text="@sample/pacotes.json/pacotes/dias" />
+                app:layout_constraintTop_toBottomOf="@+id/item_pacotes_divisor" />
 
             <TextView
+                android:id="@+id/item_pacotes_preco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="R$ 243,99"
+                tools:text="@sample/pacotes.json/pacotes/preco"
                 android:textColor="@android:color/holo_green_dark"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/item_pacote_dias"
-                app:layout_constraintTop_toBottomOf="@+id/item_pacote_dias"
-                tools:text="@sample/pacotes.json/pacotes/preco" />
+                app:layout_constraintStart_toStartOf="@+id/item_pacotes_dias"
+                app:layout_constraintTop_toBottomOf="@+id/item_pacotes_dias" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
