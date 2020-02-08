@@ -19,6 +19,9 @@ import java.util.Locale;
 
 import br.com.alura.aluraviagens.R;
 import br.com.alura.aluraviagens.model.Pacote;
+import br.com.alura.aluraviagens.util.DiasUtil;
+import br.com.alura.aluraviagens.util.MoedaUtil;
+import br.com.alura.aluraviagens.util.ResourceUtil;
 
 public class ListaPacodeAdapter extends BaseAdapter {
 
@@ -58,32 +61,21 @@ public class ListaPacodeAdapter extends BaseAdapter {
         return viewCriado;
     }
 
-
     private void mostraPreco(View viewCriado, Pacote pacote) {
         TextView preco = viewCriado.findViewById(R.id.item_pacotes_preco);
-        BigDecimal precoDoPacote = pacote.getPreco();
-        NumberFormat formatoBrasileira = DecimalFormat.getCurrencyInstance(new Locale("pt", "br"));
-        String moedaBrasileira = formatoBrasileira.format(precoDoPacote);
+        String moedaBrasileira = MoedaUtil.formataParaBrasileiro(pacote.getPreco());
         preco.setText(moedaBrasileira);
     }
 
     private void mostraDias(View viewCriado, Pacote pacote) {
         TextView dias = viewCriado.findViewById(R.id.item_pacotes_dias);
-        String textoDias = "";
-        int quantidadeDeDias = pacote.getDias();
-        if(quantidadeDeDias > 1) {
-            textoDias = quantidadeDeDias + " dias";
-        } else {
-            textoDias = quantidadeDeDias + " dia";
-        }
+        String textoDias = DiasUtil.formataParaTexto(pacote.getDias());
         dias.setText(textoDias);
     }
 
     private void mostraImagem(View viewCriado, Pacote pacote) {
         ImageView imagem = viewCriado.findViewById(R.id.item_pacotes_imagem);
-        Resources resources = context.getResources();
-        int idDodrawable = resources.getIdentifier(pacote.getImagem(), "drawable", context.getPackageName());
-        Drawable drawableImagemPacote = resources.getDrawable(idDodrawable);
+        Drawable drawableImagemPacote = ResourceUtil.devolveDrawable(this.context, pacote.getImagem());
         imagem.setImageDrawable(drawableImagemPacote);
     }
 
